@@ -70,7 +70,9 @@ const login = async (req: Request, res: Response) => {
 
 const listUser = async (req: Request, res: Response) => {
     try {
-        const getUserData = await User.find({}).select('-password')
+        const getUserData = await User.find({
+            isDeleted: false
+        }).select('-password').sort({ createdAt: -1 })
         return res.status(200).json({
             status: StatusCodes.OK,
             message: message.USER_DATA_GET,

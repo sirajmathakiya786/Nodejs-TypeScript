@@ -5,6 +5,7 @@ interface User {
     email: string,
     password: string,
     phoneNumber: string,
+    role: string
     isDeleted: boolean
     createdAt: Date,
     updatedAt: Date
@@ -15,6 +16,7 @@ const userSchema = new Schema<User, Model<User>>({
     email: { type: String, required: true },
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },
+    role: { type: String, enum: ['admin','user'],default:'user'},
     isDeleted: { type: Boolean, default:false}
 }, {
     versionKey: false,

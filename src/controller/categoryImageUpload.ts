@@ -1,6 +1,8 @@
-import multer, { Multer,RequestHandler } from 'multer';
+import { Request, Response, NextFunction } from 'express';
+import multer, { Multer } from 'multer';
 import path from 'path';
-import { Request } from 'express';
+import { RequestHandler } from 'express-serve-static-core';
+
 
 const storage = multer.diskStorage({
   destination: (req: Request, file: Express.Multer.File, cb: (error: null | Error, destination: string) => void) => {
@@ -13,7 +15,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const fileFilter = (req: Request, file: Express.Multer.File, cb: (error: null | Error, acceptFile: boolean) => void) => {
+const fileFilter = (req: Request, file: Express.Multer.File, cb: (error: Error | null, acceptFile: boolean) => void) => {
   const fileTypes = /jpg|png/;
   const mimeType = fileTypes.test(file.mimetype);
   const extname = fileTypes.test(path.extname(file.originalname));
@@ -27,9 +29,9 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: (error: null | 
 
 const limits = { fileSize: 1000000 };
 
-const upload: RequestHandler = multer({
-  storage,
-  limits,
+const upload = multer({
+  storage: storage,
+  limits: limits,
   fileFilter,
 }).single('profileImage');
 

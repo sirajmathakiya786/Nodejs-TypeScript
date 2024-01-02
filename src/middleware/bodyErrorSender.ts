@@ -9,7 +9,6 @@ const validateRequest = (validator: any) => async (req: Request, res: Response, 
     const validationError = err as ValidationError;
     const errors = (validationError.details || []).map((detail: any) => {
 
-      
       const field = detail.context?.key || 'unknown';
       const message = detail.message;
       return `${field}: ${message}`;

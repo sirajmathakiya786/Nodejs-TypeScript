@@ -12,10 +12,10 @@ interface User {
 }
 
 const userSchema = new Schema<User, Model<User>>({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
+    name: { type: String, required: false },
+    email: { type: String, required: false },
+    password: { type: String, required: false },
+    phoneNumber: { type: String, required: false },
     role: { type: String, enum: ['admin','user'],default:'user'},
     isDeleted: { type: Boolean, default:false}
 }, {

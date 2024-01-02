@@ -7,11 +7,13 @@ require('./src/config/mongoose');
 
 import userRouter from './src/routes/user';
 import categoryRouter from './src/routes/category';
+import orderRouter from './src/routes/order';
 
 app.use(bodyParser.json());
 
 app.use('/api/users', userRouter);
-app.use('/api/category', categoryRouter)
+app.use('/api/category', categoryRouter);
+app.use('/api/order', orderRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);

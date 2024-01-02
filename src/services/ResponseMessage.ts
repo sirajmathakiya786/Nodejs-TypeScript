@@ -8,7 +8,8 @@ const message = {
     USER_LOGIN: "Login Successfully",
     USER_DATA_UPDATED: "User Data Updated",
     USER_NOT_FOUND: "User Not Found",
-    USER_DELETED: "User Deleted Successfully"    
+    USER_DELETED: "User Deleted Successfully",
+    ORDER_CREATED: "Order Created Successfully"
 }
 
 export { message }
